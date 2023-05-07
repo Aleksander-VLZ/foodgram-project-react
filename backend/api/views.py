@@ -100,7 +100,7 @@ class RecipeViewSet(ModelViewSet):
         ).values(
             'ingredient__name',
             'ingredient__measurement_unit'
-        ).annotate(amount=Sum('total'))
+        ).annotate(total=Sum('amount'))
 
         today = timezone.today()
         shopping_list = (
