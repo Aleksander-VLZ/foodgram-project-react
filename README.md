@@ -129,4 +129,4 @@ docker-compose -f docker-compose-local.yml up -d
 
 ### Автор:
 
-Ратушнюк Александр (c) 2023
+Ратушнюк Александр (c) 202333333
