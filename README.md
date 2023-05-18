@@ -124,7 +124,7 @@ docker-compose -f docker-compose-local.yml up -d
 Доступ в админ-панель:
 
 http://51.250.29.11/admin
-login: admin (al.ratyshnuk@mail.ru)
+login: aleksander (al.ratyshnuk@mail.ru)
 pass: Teramont2023
 
 - После запуска проект будут доступен по адресу: [http://localhost/]

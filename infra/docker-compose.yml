@@ -13,7 +13,7 @@ services:
 
 
   backend:
-    image: abramow79/foodgram_backend
+    image: aleksandervlz/foodgram-backend:latest
     #build: ../backend
     volumes:
       - static_value:/app/static/
@@ -26,7 +26,7 @@ services:
     container_name: foodgram_backend
 
   frontend:
-    image: abramow79/foodgram_frontend
+    image: aleksandervlz/foodgram-frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
