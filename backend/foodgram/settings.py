@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('TOKEN', 'default-value')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -131,5 +131,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LENGTH_OF_FIELDS = 254
 
 LENGTH_OF_RECIPES = 200
-
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
