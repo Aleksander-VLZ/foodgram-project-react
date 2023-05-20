@@ -18,7 +18,6 @@ class IngredientInline(admin.TabularInline):
     min_num = 1
 
 
-@admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     """Класс настройки раздела рецептов."""
     list_display = ('author', 'name', 'cooking_time',
@@ -30,7 +29,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
     def get_favorites(self, obj):
         return obj.favorites.count()
-    get_favorites.short_description = 'Избранное'
+    # get_favorites.short_description = 'Избранное'
 
     def get_ingredients(self, obj):
         """Получает ингредиент или список ингредиентов рецепта."""
@@ -39,7 +38,7 @@ class RecipeAdmin(admin.ModelAdmin):
             in obj.ingredients.values(
                 'ingredient_name', 'amount',
                 'ingredient_measurement_unit')])
-    get_ingredients.short_description = 'Ингредиенты'
+    # get_ingredients.short_description = 'Ингредиенты'
 
 
 class ShoppingCartAdmin(admin.ModelAdmin):
@@ -68,5 +67,6 @@ class FavoriteAdmin(admin.ModelAdmin):
 
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Favorite, FavoriteAdmin)
+admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(ShoppingCart, ShoppingCartAdmin)
 admin.site.register(Ingredient, IngredientAdmin)

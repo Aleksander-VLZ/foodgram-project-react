@@ -22,7 +22,7 @@ from .serializers import (CreateRecipeSerializer, FavoriteSerializer,
                           TagSerializer, UserSerializer)
 
 
-class UserViewSet(UserViewSet):
+class CustomUserViewSet(UserViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     pagination_class = CustomPagination
