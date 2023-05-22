@@ -22,7 +22,7 @@ from .serializers import (CreateRecipeSerializer, FavoriteSerializer,
                           TagSerializer, UserSerializer)
 
 
-class CustomUserViewSet(UserViewSet):
+class UserViewSet(UserViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     pagination_class = CustomPagination
@@ -34,7 +34,8 @@ class CustomUserViewSet(UserViewSet):
     )
     def subscribe(self, request, id):
         user = request.user
-        author = get_object_or_404(User, pk=id)
+        author_id = self.kwargs.get('id')
+        author = get_object_or_404(User, id=author_id)
 
         if request.method == 'POST':
             serializer = SubscribeSerializer(

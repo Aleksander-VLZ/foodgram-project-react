@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
-from django.db.models import F, Q, UniqueConstraint
+from django.db.models import UniqueConstraint
 
 
 class User(AbstractUser):
@@ -36,24 +36,24 @@ class User(AbstractUser):
 class Follow(models.Model):
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
         verbose_name='Автор',
-        related_name='follower',)
+        related_name='follower',
+        on_delete=models.CASCADE,
+    )
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
         verbose_name='Подписчик',
-        related_name='following')
+        related_name='following',
+        on_delete=models.CASCADE,
+    )
 
     class Meta:
         ordering = ('-id', )
         constraints = [
             UniqueConstraint(
                 fields=('user', 'author'),
-                name='unique_follow'),
-            models.CheckConstraint(
-                check=~Q(user=F('author')),
-                name='no_self_follow')]
+                name='unique_follow')
+        ]
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
 
